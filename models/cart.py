@@ -1,8 +1,8 @@
-from db import db
+from db_connect import db
 _db = db
 
 
-class cart(_db.Model):
+class Cart(_db.Model):
     id: int = _db.Column(_db.Integer, primary_key=True, nullable=False, autoincrement=True)
     user_id: str = _db.Column(_db.String(30), _db.ForeignKey('user.user_id'))
     product_id: int = _db.Column(_db.Integer, _db.ForeignKey('product.id'))
