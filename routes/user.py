@@ -48,7 +48,7 @@ def register_user(form):
 
 # 사용자 컨트롤러 - 로그아웃, 사용자 정보 조회, 사용자 삭제
 @user_bp.route('/my-page', methods=['GET'])
-@jwt_required()
+# @jwt_required()
 def get_user():
     current_user = get_jwt_identity()
     user = User.query.filter_by(user_id=current_user).first()
@@ -59,6 +59,7 @@ def get_user():
 @jwt_required()
 def logout_user():  
     jti = get_jwt()["jti"]
+    # 토큰 폐기 하지말고 로직바꿔서 처리해보기
     add_to_blocklist(jti)  # 토큰을 블랙리스트에 추가합니다.
     print(BLOCKLIST)
     return jsonify({'message': 'Logged out successfully'}), 200

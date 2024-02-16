@@ -4,6 +4,9 @@ from flask_jwt_extended import JWTManager
 from config.constants import SQLALCHEMY_DATABASE_URI
 from db_connect import db
 from routes.user import user_bp
+from routes.order import order_bp
+from routes.product import product_bp
+from routes.cart import cart_bp
 from models.user import User
 from models.product import Product
 from models.cart import Cart
@@ -36,6 +39,9 @@ _db=db
 _db.init_app(app)
 api = Api(app)
 api.register_blueprint(user_bp)
+api.register_blueprint(order_bp)
+api.register_blueprint(product_bp)
+api.register_blueprint(cart_bp)
 
 if __name__ == '__main__':
     with app.app_context():

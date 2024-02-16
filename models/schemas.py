@@ -39,3 +39,17 @@ class RegisterSchema(Schema):
     username = fields.Str(required=True)
     password = fields.Str(required=True)
 
+class CreateProductSchema(Schema):
+    productname = fields.Str(required=True)
+    price = fields.Float(required=True)
+    description = fields.Str()
+
+class AddToCartSchema(Schema):
+    product_id = fields.Int(required=True)
+    quantity = fields.Int(required=True)
+
+class EditCartSchema(Schema):
+    quantity = fields.Int(required=True)
+
+class OrderHandlerSchema(Schema):
+    is_paid = fields.Bool(required=True)
