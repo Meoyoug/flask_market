@@ -1,8 +1,8 @@
-from db import db
+from db_connect import db
 _db = db
 
 
-class order_detail(_db.Model):
+class OrderDetail(_db.Model):
     id: int = _db.Column(_db.Integer, primary_key=True, nullable=False, autoincrement=True)
     order_id: int = _db.Column(_db.Integer, _db.ForeignKey('order.id'))
     product_id: int = _db.Column(_db.Integer, _db.ForeignKey('product.id'))
