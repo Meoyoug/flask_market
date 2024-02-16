@@ -8,6 +8,10 @@ class User(_db.Model):
     user_id: str = _db.Column(_db.String(30), nullable=False ,unique = True)
     username: str = _db.Column(_db.String(80), nullable=False)
     password_hash: str = _db.Column(_db.String(255), nullable=False)
+
+    orders = _db.relationship('Order', back_populates='user', lazy='dynamic')
+    carts = _db.relationship('Cart', back_populates='user', lazy='dynamic')
+    
     def __init__(self,user_id: str, username: str, password_hash: str):
         self.user_id = user_id
         self.username = username
